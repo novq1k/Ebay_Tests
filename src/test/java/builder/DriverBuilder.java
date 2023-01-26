@@ -16,6 +16,7 @@ public class DriverBuilder {
             WebDriverManager webDriverManager = getWebDriverManager(value);
             driver = webDriverManager.create();
         }
+
         return driver;
     }
 

@@ -10,10 +10,12 @@ public class Base {
 
     @BeforeClass(alwaysRun = true)
     public void browserSetup() throws Exception {
-            driver = DriverBuilder.getDriver(Drivers.CHROME);
+        driver = DriverBuilder.getDriver(Drivers.CHROME);
         driver.manage().window().maximize();
     }
 
     @AfterClass(alwaysRun = true)
-    public void browserClose() { DriverBuilder.closeDriver();}
+    public void browserClose() {
+        DriverBuilder.closeDriver();
+    }
 }
