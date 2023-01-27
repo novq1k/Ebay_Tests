@@ -8,7 +8,7 @@ public class CheckoutTests extends Base {
     private final String searchKey = "Samsung Galaxy S10e SM-G970U - 128GB";
 
     @Test
-    public void buyAsGuestWithoutSetRequiredFields() {
+    public void checkoutAsGuestWithoutSetRequiredFields() {
         HomePage homePage = new HomePage(driver);
         Boolean confirmAndPayButtonDisabled = homePage
                 .openPage()
