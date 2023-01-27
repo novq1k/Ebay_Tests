@@ -11,8 +11,6 @@ import java.time.Duration;
 public abstract class AbstractPage {
     protected WebDriver driver;
 
-    protected abstract AbstractPage openPage();
-
     protected static final int DEFAULT_TIMEOUT = 30;
 
     protected AbstractPage(WebDriver driver) {
