@@ -7,7 +7,6 @@ import page.HomePage;
 import page.ItemPage;
 
 public class CartTests extends Base {
-    private final String searchKey = "Samsung Galaxy S10e SM-G970U - 128GB";
 
     @Test
     public void addItemToCart() {

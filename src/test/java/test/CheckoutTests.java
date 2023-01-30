@@ -8,7 +8,6 @@ import page.ItemPage;
 import page.UserSelectionAlert;
 
 public class CheckoutTests extends Base {
-    private final String searchKey = "Samsung Galaxy S10e SM-G970U - 128GB";
 
     @Test
     public void checkoutAsGuestWithoutSetRequiredFields() {

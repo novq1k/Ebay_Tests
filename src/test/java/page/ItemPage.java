@@ -39,7 +39,6 @@ public class ItemPage extends AbstractPage {
         return new CartPage(driver);
     }
 
-    //ItemPage
     public UserSelectionAlert clickBuyItNow() {
         waitWebElementIsVisible(buyItNowButton).click();
 

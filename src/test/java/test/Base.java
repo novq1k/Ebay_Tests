@@ -7,6 +7,7 @@ import util.Drivers;
 
 public class Base {
     protected WebDriver driver;
+    protected final String searchKey = "pixel 6 pro";
 
     @BeforeClass(alwaysRun = true)
     public void browserSetup() throws Exception {
