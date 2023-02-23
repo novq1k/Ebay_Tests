@@ -41,4 +41,18 @@ public class CartTests extends Base {
 
         Assert.assertTrue(itemDeleted, "Item is not deleted from cart");
     }
+
+    @Test
+    public void changeCartItemQuantity() {
+        addItemToCart();
+
+        CartPage cartPage = new CartPage(driver);
+
+        Integer testQuantity = 2;
+
+        Boolean quantityIsUpdated = cartPage
+                .changeQuantity(testQuantity);
+
+        Assert.assertTrue(quantityIsUpdated, "Quantity is not updated");
+    }
 }
