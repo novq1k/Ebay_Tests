@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 import java.util.regex.Pattern;
@@ -13,6 +14,7 @@ public class HomePage extends AbstractPage {
 
     public HomePage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath = "//*[@class = 'gh-tb ui-autocomplete-input']")
