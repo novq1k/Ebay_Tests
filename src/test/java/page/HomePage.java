@@ -42,22 +42,22 @@ public class HomePage extends AbstractPage {
     }
 
     public Boolean compareSearchResultsWithSearchKey(String value) {
-        boolean isEqual = false;
-        String[] testStringWords = value.split(" ");
+        boolean isExist = false;
+        String[] testWords = value.split(" ");
 
         for (WebElement webElement : searchResult) {
             String source = webElement.getText();
 
-            for (String testWord : testStringWords) {
-                isEqual = Pattern.compile(Pattern.quote(testWord), Pattern.CASE_INSENSITIVE).matcher(source).find();
+            for (String testWord : testWords) {
+                isExist = Pattern.compile(Pattern.quote(testWord), Pattern.CASE_INSENSITIVE).matcher(source).find();
 
-                if (isEqual) {
+                if (isExist) {
                     break;
                 }
             }
         }
 
-        return isEqual;
+        return isExist;
     }
 
     public ItemPage selectItemFromSearchList(int index) {

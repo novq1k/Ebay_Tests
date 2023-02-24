@@ -3,7 +3,7 @@ package test;
 import builder.DriverBuilder;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import util.Drivers;
+import builder.Drivers;
 
 public class Base {
     protected WebDriver driver;

@@ -21,9 +21,8 @@ public class CartTests extends Base {
         String itemName = itemPage
                 .getItemName();
 
-        CartPage cartPage = itemPage.clickAddToCart();
-
-        Boolean hasItem = cartPage
+        Boolean hasItem = itemPage
+                .clickAddToCart()
                 .findItemInCart(itemName);
 
         Assert.assertTrue(hasItem, "Item is not found in cart");
