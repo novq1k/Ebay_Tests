@@ -1,21 +1,24 @@
 package test;
 
+import model.Item;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.CartPage;
 import page.HomePage;
 import page.ItemPage;
+import service.ItemCreator;
 
 public class CartTests extends Base {
 
     @Test
     public void addItemToCart() {
         int itemIndex = 0;
+        Item item = ItemCreator.withoutRequiredFields();
 
         HomePage homePage = new HomePage(driver);
         ItemPage itemPage = homePage
                 .openPage()
-                .search(searchKey)
+                .search(item.getSearchKey())
                 .selectItemFromSearchList(itemIndex);
 
         String itemName = itemPage
