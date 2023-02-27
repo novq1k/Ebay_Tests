@@ -8,9 +8,12 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 import java.util.regex.Pattern;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class HomePage extends AbstractPage {
     private static final String PAGE_URL = "https://www.ebay.com/";
+    private final Logger logger = LogManager.getRootLogger();
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -37,7 +40,7 @@ public class HomePage extends AbstractPage {
                 .click(searchButton)
                 .build()
                 .perform();
-
+        logger.info("Search item with name: [" + text + "]");
         return this;
     }
 
