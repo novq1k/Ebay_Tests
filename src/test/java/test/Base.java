@@ -1,9 +1,9 @@
 package test;
 
 import builder.DriverBuilder;
+import builder.DriverBuilderFromProperty;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
-import builder.Drivers;
 
 public class Base {
     protected WebDriver driver;
@@ -11,12 +11,12 @@ public class Base {
 
     @BeforeClass(alwaysRun = true)
     public void browserSetup() throws Exception {
-        driver = DriverBuilder.getDriver(Drivers.CHROME);
+        driver = DriverBuilderFromProperty.getDriver();
         driver.manage().window().maximize();
     }
 
     @AfterClass(alwaysRun = true)
     public void browserClose() {
-        DriverBuilder.closeDriver();
+        DriverBuilderFromProperty.closeDriver();
     }
 }

@@ -3,8 +3,8 @@ package service;
 import java.util.ResourceBundle;
 
 public class TestDataReader {
-    private static ResourceBundle resourceBundle = ResourceBundle.getBundle("qa");
-    //TODO change qa value to System.getProperty("environment") while run from console
+    private final static ResourceBundle resourceBundle = ResourceBundle.getBundle(System.getProperty("environment"));
+    //replace System.getProperty("environment") to name of properties file for run not from console
 
     public static String getTestData(String key) {
         return resourceBundle.getString(key);
