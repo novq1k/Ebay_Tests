@@ -4,15 +4,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 import java.util.regex.Pattern;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class HomePage extends AbstractPage {
     private static final String PAGE_URL = "https://www.ebay.com/";
+    private final Logger logger = LogManager.getRootLogger();
 
     public HomePage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath = "//*[@class = 'gh-tb ui-autocomplete-input']")
@@ -35,27 +40,27 @@ public class HomePage extends AbstractPage {
                 .click(searchButton)
                 .build()
                 .perform();
-
+        logger.info("Search item with name: [" + text + "]");
         return this;
     }
 
     public Boolean compareSearchResultsWithSearchKey(String value) {
-        boolean isEqual = false;
-        String[] testStringWords = value.split(" ");
+        boolean isExist = false;
+        String[] testWords = value.split(" ");
 
         for (WebElement webElement : searchResult) {
             String source = webElement.getText();
 
-            for (String testWord : testStringWords) {
-                isEqual = Pattern.compile(Pattern.quote(testWord), Pattern.CASE_INSENSITIVE).matcher(source).find();
+            for (String testWord : testWords) {
+                isExist = Pattern.compile(Pattern.quote(testWord), Pattern.CASE_INSENSITIVE).matcher(source).find();
 
-                if (isEqual) {
+                if (isExist) {
                     break;
                 }
             }
         }
 
-        return isEqual;
+        return isExist;
     }
 
     public ItemPage selectItemFromSearchList(int index) {

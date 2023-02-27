@@ -2,7 +2,6 @@ package builder;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import util.Drivers;
 
 public class DriverBuilder {
 
@@ -20,7 +19,7 @@ public class DriverBuilder {
         return driver;
     }
 
-    public static WebDriverManager getWebDriverManager(Drivers value) throws Exception {
+    private static WebDriverManager getWebDriverManager(Drivers value) throws Exception {
         WebDriverManager webDriverManager;
         switch (value) {
             case CHROME:
