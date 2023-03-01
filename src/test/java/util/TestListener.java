@@ -1,6 +1,6 @@
 package util;
 
-import builder.DriverBuilderFromProperty;
+import builder.DriverBuilder;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -48,7 +48,7 @@ public class TestListener implements ITestListener {
     }
 
     private void saveScreenshot(){
-        File screenCapture = ((TakesScreenshot) DriverBuilderFromProperty
+        File screenCapture = ((TakesScreenshot) DriverBuilder
                 .getDriver())
                 .getScreenshotAs(OutputType.FILE);
         try {
