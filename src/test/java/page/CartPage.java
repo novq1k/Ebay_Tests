@@ -27,6 +27,10 @@ public class CartPage extends AbstractPage {
     @FindBy(xpath = "//*[@data-test-id='page-alerts']//a")
     private WebElement confirmationOfDeleteAlert;
 
+    private final By labelQuantitiesDropdown = new By.ByXPath("//div[@class='grid__cell--one-half quantity-col']//*[@class='quantity']//*[@data-test-id = 'qty-dropdown']");
+
+    private final By labelSelectedOpts = new By.ByCssSelector("select[data-test-id='qty-dropdown'] option:checked");
+
     public CartPage openPage() {
         driver.get(PAGE_URL);
         return this;
@@ -63,15 +67,13 @@ public class CartPage extends AbstractPage {
 
     public Boolean changeQuantity(Integer value) {
 
-        Select quantitiesDropdown = new Select(driver.findElement(By.xpath
-                ("//div[@class='grid__cell--one-half quantity-col']//*[@class='quantity']//*[@data-test-id = 'qty-dropdown']")));
+        Select quantitiesDropdown = new Select(driver.findElement(labelQuantitiesDropdown));
 
         quantitiesDropdown.selectByValue(value.toString());
         //refresh page to update dom
         driver.navigate().refresh();
 
-        List<WebElement> selectedOpts = driver.findElements(
-                By.cssSelector("select[data-test-id='qty-dropdown'] option:checked"));
+        List<WebElement> selectedOpts = driver.findElements(labelSelectedOpts);
 
         String text = selectedOpts.get(0).getText();
 

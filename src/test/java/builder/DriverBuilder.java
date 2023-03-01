@@ -10,25 +10,32 @@ public class DriverBuilder {
     private DriverBuilder() {
     }
 
-    public static WebDriver getDriver(Drivers value) throws Exception {
+    public static WebDriver getDriver() {
+
         if (driver == null) {
-            WebDriverManager webDriverManager = getWebDriverManager(value);
+            WebDriverManager webDriverManager = null;
+            try {
+                webDriverManager = getWebDriverManager(System.getProperty("browser"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             driver = webDriverManager.create();
         }
 
         return driver;
     }
 
-    private static WebDriverManager getWebDriverManager(Drivers value) throws Exception {
+    private static WebDriverManager getWebDriverManager(String browser) throws Exception {
         WebDriverManager webDriverManager;
-        switch (value) {
-            case CHROME:
+        switch (browser) {
+            case "chrome":
                 webDriverManager = WebDriverManager.chromedriver();
                 break;
-            case EDGE:
+            case "edge":
                 webDriverManager = WebDriverManager.edgedriver();
                 break;
-            case FIREFOX:
+            case "firefox":
                 webDriverManager = WebDriverManager.firefoxdriver();
                 break;
             default:
