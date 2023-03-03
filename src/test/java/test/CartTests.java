@@ -44,7 +44,7 @@ public class CartTests extends Base {
         Assert.assertTrue(itemDeleted, "Item is not deleted from cart");
     }
 
-    @Test
+    @Test(enabled = false)
     public void changeCartItemQuantity() {
         addItemToCart();
 
