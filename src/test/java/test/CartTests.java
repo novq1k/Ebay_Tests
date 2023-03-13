@@ -13,6 +13,7 @@ public class CartTests extends Base {
     @Test
     public void addItemToCart() {
         int itemIndex = 0;
+
         Item item = ItemCreator.withoutRequiredFields();
 
         HomePage homePage = new HomePage(driver);
@@ -30,6 +31,30 @@ public class CartTests extends Base {
 
         Assert.assertTrue(hasItem, "Item is not found in cart");
     }
+
+    @Test
+    public void givenItemWithRequiredFields_whenAddItemToCartWithoutRequiredFields_thenShouldBeFailed() {
+        int itemIndex = 0;
+
+        Item item = ItemCreator.withRequiredFields();
+
+        HomePage homePage = new HomePage(driver);
+        ItemPage itemPage = homePage
+                .openPage()
+                .search(item.getSearchKey())
+                .selectItemFromSearchList(itemIndex);
+
+        String itemName = itemPage
+                .getItemName();
+
+        Boolean hasItem = itemPage
+                .clickAddToCart()
+                .findItemInCart(itemName);
+
+        Assert.assertFalse(hasItem, "Item should not be added to cart without set required fields");
+    }
+
+
 
     @Test
     public void deleteItemFromCart() {
